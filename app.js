@@ -7,6 +7,7 @@ const destroyBtn = document.getElementById("destroy-btn");
 const eraserBtn = document.getElementById("eraser-btn");
 
 const lineWidth = document.getElementById("line-width");
+const fontSize = document.getElementById("font-size");
 
 const color = document.getElementById("color");
 const colorOptions = Array.from(
@@ -104,7 +105,6 @@ function onDoubleClick(event) {
   if (text !== "") {
     ctx.save();
     ctx.lineWidth = 1;
-    ctx.font = "48px serif";
     ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore();
   }
@@ -117,6 +117,10 @@ function onSaveClick() {
   a.download = "myDrawing.png";
   a.click();
 }
+
+function onFontSizeChange() {
+  ctx.font = `${fontSize.value}px serif`;
+}
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
@@ -125,6 +129,7 @@ canvas.addEventListener("click", onCanvasClick);
 canvas.addEventListener("dblclick", onDoubleClick);
 
 lineWidth.addEventListener("change", onLineWidthChange);
+fontSize.addEventListener("change", onFontSizeChange);
 color.addEventListener("change", onColorChange);
 
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));
