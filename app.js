@@ -115,7 +115,7 @@ function onSaveClick() {
   const a = document.createElement("a");
   a.href = url;
   a.download = "myDrawing.png";
-  // a.click();
+  a.click();
 }
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
